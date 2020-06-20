@@ -1,16 +1,14 @@
 /*open with vscode
 3[a3[b]1[ab]]
-duyệt từ phải -> trái
-    nếu ']': push vào stack
-    nêu chữ cái:
-        lấy top ra //lấy b ra
-        push vào s[i] + top // push vào ab
-    nếu '[': 
-        lấy top ra (1 xâu con)
-        substr = top * s[i-1]
-        nếu top là xâu -> lấy ra tiếp
-        substr += top
-        push substr
+2 stack: số và ký tự
+duyệt từ trái -> phải
+    nếu số push và stack số
+    nếu ký tự khác dấu đóng
+        push vào stack ký tự
+    nêu ký tự đóng
+        lấy từng ký tự trong stack kt ra cho đến [
+        lấy 1 số trong stack số
+        ...
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,29 +20,53 @@ string repeat(string s, int n) {
 }
 void solve(string s) {
     int n = s.length();
-    stack <string> st;
-    for (int i=n-1; i>=0; --i) {
-        if (s[i] == ']')
-            st.push(string(1, s[i]));
-        else if (isalpha(s[i])) {
-            if (st.top() != "]") {
-                string top = st.top(); st.pop();
-                st.push(string(1, s[i]) + top);
+    string res;
+    stack <int> so;
+    stack <char> kyTu;
+    for (int i=0; i<n; i++) {
+        if (isdigit(s[i])) {
+            int tmp = 0;
+            while (isdigit(s[i])) {
+                tmp = tmp * 10 + s[i] - '0';
+                i++;
             }
-            else st.push(string(1, s[i]));
+            i--;
+            so.push(tmp);
+        }
+        else if (s[i] == ']') {
+            string tmp;
+            int lap;
+            if (!so.empty()) {
+                lap = so.top();
+                so.pop();
+            }
+            while (!kyTu.empty() && kyTu.top() != '[') {
+                tmp = kyTu.top() + tmp;
+                kyTu.pop();
+            }
+            if (!kyTu.empty() && kyTu.top() == '[')
+                kyTu.pop();
+            for (int j=0; j<lap; j++)  
+                res = res + tmp;
+            for (int j=0; j<res.length(); j++)
+                kyTu.push(res[j]);
+            res = "";
         }
         else if (s[i] == '[') {
-            string substr = st.top(); st.pop();
-            st.pop(); // ]
-            if (isdigit(s[i-1])) substr = repeat(substr, s[i-1] - '0');
-            if (!st.empty() && st.top() != "]") {
-                substr += st.top(); 
-                st.pop();
+            if (isdigit(s[i-1])) 
+                kyTu.push(s[i]);
+            else {
+                kyTu.push(s[i]);
+                so.push(1);
             }
-            st.push(substr);
         }
+        else kyTu.push(s[i]);
     }
-    cout << st.top() << endl;
+    while (!kyTu.empty()) {
+        res = kyTu.top() + res;
+        kyTu.pop();
+    }
+    cout << res << endl;
 }
 int main() {
     int t; cin >> t;
