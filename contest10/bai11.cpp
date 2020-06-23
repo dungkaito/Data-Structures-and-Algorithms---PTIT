@@ -1,6 +1,5 @@
 /*
 idea: www.geeksforgeeks.org/prims-algorithm-using-priority_queue-stl/
-dsu method: https://thuytrangcoding.wordpress.com/2017/12/15/graph-mst-kruskal/
 */
 #include <bits/stdc++.h>
 using namespace std;
