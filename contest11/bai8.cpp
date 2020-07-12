@@ -9,7 +9,7 @@ struct Node {
     }
 };
 
-void makeNote(Node *root, int cha, int con, char ch) {
+void makeNode(Node *root, int cha, int con, char ch) {
     if (ch == 'L')
         root->left = new Node(con);
     else
@@ -19,7 +19,7 @@ void makeNote(Node *root, int cha, int con, char ch) {
 void insert(Node *root, int cha, int con, char ch) {
     if (root == NULL) return;
     if (root->data == cha)
-        makeNote(root, cha, con, ch);
+        makeNode(root, cha, con, ch);
     else {
         insert(root->left, cha, con, ch);
         insert(root->right, cha, con, ch);
@@ -52,7 +52,7 @@ int main() {
             cin >> cha >> con >> ch;
             if (root == NULL) {
                 root = new Node(cha);
-                makeNote(root, cha, con, ch);
+                makeNode(root, cha, con, ch);
             }
             else insert(root, cha, con ,ch);
         }
