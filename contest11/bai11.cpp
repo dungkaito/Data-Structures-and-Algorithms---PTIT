@@ -17,7 +17,7 @@ bool check1(Node *root) {
     return (check1(l) && check1(r));
 } 
 
-bool check2(Node *root, int level, int leafLevel) {
+bool check2(Node *root, int level, int &leafLevel) {
     // kiểm tra các node lá có cùng mức hay không
     if (!root) return true;
     Node *l = root->left, *r = root->right;
@@ -53,7 +53,8 @@ int main() {
             m[con] = child;
         }
         // solve
-        if (check1(root) && check2(root, 0, 0))
+        int leafLevel = 0;
+        if (check1(root) && check2(root, 0, leafLevel))
             cout << "Yes\n";
         else cout << "No\n";
     }  

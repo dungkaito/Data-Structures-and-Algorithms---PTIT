@@ -9,6 +9,23 @@ struct Node {
     }
 };
 
+void makeNode(Node *root, int cha, int con, char ch) {
+    if (ch == 'L')
+        root->left = new Node(con);
+    else
+        root->right = new Node(con);
+}
+
+void insert(Node *root, int cha, int con, char ch) {
+    if (root == NULL) return;
+    if (root->data == cha)
+        makeNode(root, cha, con, ch);
+    else {
+        insert(root->left, cha, con, ch);
+        insert(root->right, cha, con, ch);
+    }
+}
+
 int maxPathSum(Node *root, int &res) {
     if (!root) return 0;
     if (!root->left && !root->right)
@@ -27,20 +44,14 @@ int main() {
     char ch;
     while (t--) {
         cin >> n;
-        Node *root = NULL, *parent, *child;
-        map <int, Node*> m;
+        Node *root = NULL;
         for (int i=0; i<n; i++) {
             cin >> cha >> con >> ch;
-            if (m.find(cha) == m.end()) {
-                parent = new Node(cha);
-                m[cha] = parent;
-                if (root == NULL) root = parent;
+            if (root == NULL) {
+                root = new Node(cha);
+                makeNode(root, cha, con, ch);
             }
-            else parent = m[cha];
-            child = new Node(con);
-            if (ch == 'L') parent->left = child;
-            else parent->right = child;
-            m[con] = child;
+            else insert(root, cha, con ,ch);
         }
         int res = INT_MIN;
         maxPathSum(root, res);
