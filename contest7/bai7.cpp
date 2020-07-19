@@ -14,9 +14,9 @@ nếu nửa phải có lẻ phần tử: còn 1 dấu vẫn mở(thiếu đóng)
 code:
 đếm số ngoặc đóng: dong;
 đếm số ngoặc mở: mo = size-dong
-kết quả: dong/2 + mo/2 + dong%2 + mo%2
-rút gọn: (dong+mo)/2 + (dong%2)*2
-        =size/2 + (dong%2)*2
+kết quả: dong/2 + mo/2 + dong%2 (hoặc +mo%2, chỉ cần đổi 1 bên)
+rút gọn: (dong+mo)/2 + dong%2
+        =size/2 + dong%2
 */
 #include <bits/stdc++.h>
 using namespace std;
