@@ -1,72 +1,57 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int n, a[9][9], kt; 
-bool mark[100][100];
+
+int n, a[10][10], check;
 string s;
-void Try(int i, int j) {
-	for(int k=1; k<=4; k++){
-		if(i==n-1 && j==n-1) {
-			kt=1;
-			cout<<s<<" ";
-			return;
-		}
-		else{
-			if(k==1){ //D
-				if(a[i+1][j]==1 && i+1>=0 && i+1<n && !mark[i+1][j]) {
-					s+='D';
-					mark[i][j]=true;
-					Try(i+1,j);
-					s.resize(s.size()-1); //delete last character
-					mark[i][j]=false;
-				}
-			}
-			else if(k==2){  //L
-				if(a[i][j-1]==1 && j-1>=0 && j-1<n && !mark[i][j-1]){
-					s+='L';
-					mark[i][j]=true;
-					Try(i,j-1);
-					s.resize(s.size()-1);
-					mark[i][j]=false;
-				}
-			}
-			else if(k==3){  //R
-				if(a[i][j+1]==1 && j+1>=0 && j+1<n && !mark[i][j+1]){
-					s+='R';
-					mark[i][j]=true;
-					Try(i,j+1);
-					s.resize(s.size()-1);
-					mark[i][j]=false;
-				}
-			}
-			else if(k==4){  //U
-				if(a[i-1][j]==1 && i-1>=0 && i-1<n && !mark[i-1][j]){
-					s+='U';
-					mark[i][j]=true;
-					Try(i-1,j);
-					s.resize(s.size()-1);
-					mark[i][j]=false;
-				}
-			}
-		}
+bool visited[10][10];
+
+void Try(int x, int y) {
+	if (x == n-1 && y == n-1) {
+		check = 1;
+		cout << s << " ";
+	}
+	if (x+1>=0 && x+1<n && a[x+1][y] && !visited[x+1][y]) {
+		// D
+		visited[x+1][y] = 1; s += 'D';
+		Try(x+1, y);
+		visited[x+1][y] = 0; s.resize(s.size()-1);
+	}
+	if (y-1>=0 && y-1<n && a[x][y-1] && !visited[x][y-1]) {
+		// L
+		visited[x][y-1] = 1; s += 'L';
+		Try(x, y-1);
+		visited[x][y-1] = 0; s.resize(s.size()-1);
+	}
+	if (y+1>=0 && y+1<n && a[x][y+1] && !visited[x][y+1]) {
+		// R
+		visited[x][y+1] = 1; s += 'R';
+		Try(x, y+1);
+		visited[x][y+1] = 0; s.resize(s.size()-1);
+	}
+	if (x-1>=0 && x-1<n && a[x-1][y] && !visited[x-1][y]) {
+		// U
+		visited[x-1][y] = 1; s += 'U';
+		Try(x-1, y);
+		visited[x-1][y] = 0; s.resize(s.size()-1);
 	}
 }
+
 int main() {
-	int t; cin>>t;
-	while(t--) {
-		cin>>n;
-		for(int i=0; i<n; i++)
-			for(int j=0;j<n;j++) {
-				cin>>a[i][j];
-				mark[i][j]=false;
-			}
-				
-		if(a[0][0]==0) cout<<-1;
+	int t; cin >> t;
+	while (t--) {
+		cin >> n;
+		for (int i=0; i<n; i++) 
+			for (int j=0; j<n; j++) 
+				cin >> a[i][j];
+		if (a[0][0] == 0) cout << -1;
 		else {
-			kt=0;
+			memset(visited, false, sizeof(visited));
+			visited[0][0] = 1;
+			s = "";
+			check = 0;
 			Try(0,0);
-			if(kt==0) cout<<-1;
+			if (check == 0) cout << -1;
 		}
-		cout<<"\n";
+		cout << endl;
 	}
-	return 0;
 }
