@@ -1,37 +1,41 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int A[9][9], dcXuoi[18]={0}, dcNguoc[18]={0}, markCol[9]={0}, ans=-1, queen[9];
 
-void xuLy() {
-	int sum=0;
-	for (int i=1; i<=8; i++) {
-		sum = sum + A[i][queen[i]];
-	}
-	ans = max(ans, sum);
-}
+int a[9][9], markCol[11], dcXuoi[21], dcNguoc[21], sum, ans;
 
-void Try(int i) {
-	for (int j=1; j<=8; j++) {
-		if (!dcXuoi[i-j+8] && !dcNguoc[i+j-1] && !markCol[j]) {
-			queen[i]=j;
-			dcXuoi[i-j+8]=1; dcNguoc[i+j-1]=1; markCol[j]=1;
+void Try(int row) {
+	if (row>8) return;
+	for (int col=1; col<=8; col++) {
+		if (!markCol[col] && !dcXuoi[row-col+8] && !dcNguoc[row+col-1]) {
+			markCol[col] = 1; 
+			dcXuoi[row-col+8] = 1;
+			dcNguoc[row+col-1] = 1;
+			sum += a[row][col];
 			
-			if(i==8) xuLy();
-			else Try(i+1);
+			if (row == 8) ans = max(ans, sum);
+			else Try(row+1);
 			
-			dcXuoi[i-j+8]=0; dcNguoc[i+j-1]=0; markCol[j]=0;
+			markCol[col] = 0;
+			dcXuoi[row-col+8] = 0;
+			dcNguoc[row+col-1] = 0;
+			sum -= a[row][col];
 		}
 	}
-}
+} 
 
 int main() {
-	int t; cin>>t;
+	int t; cin >> t;
 	while (t--) {
-		for(int i=1; i<=8; i++)
-			for(int j=1; j<=8; j++) cin>>A[i][j];
-		ans=-1;
+		for (int i=1; i<=8; i++)
+			for (int j=1; j<=8; j++)
+				cin >> a[i][j];
+				
+		memset(markCol, 0, sizeof(markCol));
+		memset(dcXuoi, 0, sizeof(dcXuoi));
+		memset(dcNguoc, 0, sizeof(dcNguoc));
+		sum=0; ans=INT_MIN;
 		Try(1);
-		cout<<ans<<endl;
-	}
-	return 0;
+		
+		cout << ans << endl;
+	}	
 }

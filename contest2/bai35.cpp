@@ -1,30 +1,26 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int n,k,s, X[11], dem;
-
-void xuLy() {
-	int sum=0;
-	for(int i=1; i<=k; i++)
-		sum = sum + X[i];
-	if (sum==s) dem++;
-}
+int n, k, s, x[25], sum, cnt;
 
 void Try(int i) {
-	for (int j=X[i-1]+1; j<=n-k+i; j++) {
-		X[i]=j;
-		if(i==k) xuLy();
+	for (int j=x[i-1]+1; j<=n-k+i; j++) {
+		x[i]=j;
+		sum+=j;
+		if (i==k) {
+			if (sum==s) cnt++;
+		}
 		else Try(i+1);
+		sum-=j;
 	}
 }
 
 int main() {
-	while(1) {
-		cin>>n>>k>>s;
-		if(n==0 && k==0 &&s==0) break;
-		X[0]=0; dem=0;
+	while (true) {
+		cin >> n >> k >> s;
+		if (n==0&&k==0&&s==0) break;
+		cnt=0; sum=0;
 		Try(1);
-		cout<<dem<<endl;
+		cout << cnt << endl;
 	}
-	return 0;
 }
