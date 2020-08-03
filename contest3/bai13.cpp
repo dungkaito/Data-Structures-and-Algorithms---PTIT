@@ -1,3 +1,4 @@
+/* METHOD 1
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -50,5 +51,27 @@ int main() {
 			if (s[i]<97) s[i]+=32;
 		}
 		cout << solve(s, D) <<"\n";
+	}
+}
+*/
+/***METHOD 2***/
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	string s;
+	int t, D; cin>>t;
+	while(t--) {
+		cin>>D;
+		cin>>s;
+		int maxx = 0;
+		int freq[26] ={0};
+		for (int i=0; i<s.size(); i++) {
+			if (s[i]<97) s[i]+=32;
+			freq[s[i] - 'a']++;
+			maxx = max(maxx, freq[s[i]-'a']);
+		}
+		if ((maxx-1)*(D-1)+maxx <= s.length()) cout << 1 << endl;
+		else cout << -1 << endl;
 	}
 }
