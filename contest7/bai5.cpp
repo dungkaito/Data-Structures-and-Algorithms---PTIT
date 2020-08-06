@@ -9,7 +9,7 @@ duyệt xâu:
         pop stack ra (-1, hiểu là lấy '(' ra để đc 1 cặp)
         nếu pop xong mà empty
             thì push(index hiện tại vào, mean push ')'    )
-        độ dài chuỗi con hợp lệ vừa tìm được: index vừa pop ra - top
+        độ dài chuỗi con hợp lệ vừa tìm được: index đang duyệt (dấu đóng) - top
         ans = max (ans, result độ dài vừa tìm);
 */
 #include <bits/stdc++.h>
