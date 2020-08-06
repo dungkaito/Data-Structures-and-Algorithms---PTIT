@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 dãy con dài nhất có tổng chia hết cho k
 10 3
 2 3 5 7 9 6 12 7 11 15

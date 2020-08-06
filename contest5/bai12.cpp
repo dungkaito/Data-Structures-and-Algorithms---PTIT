@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 P(n)
 nếu n<k -> P(n) = 0;
 nếu n>=k -> P(n) = n*P(n-1)/(n-k);

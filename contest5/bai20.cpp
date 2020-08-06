@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 s = "1234"  len = 4
 F[i] là tổng các xâu con có chứa s[i]
 F[0] = 1

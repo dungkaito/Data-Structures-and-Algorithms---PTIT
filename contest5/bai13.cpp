@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 U: 1 2 3 4 5 6 8 9 10 12 15
 các số U chỉ chia hết cho 2 hoặc 3 hoặc 5
 chia U thành 3 mảng con:

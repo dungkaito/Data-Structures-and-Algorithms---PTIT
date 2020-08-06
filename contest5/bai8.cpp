@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 input đề bài: A[n][m] n,m<=500
 1 1 1
 1 1 1

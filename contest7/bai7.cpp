@@ -1,4 +1,4 @@
-/*open with vscode to read
+/*open with vscode
 )(())(((
 loại bỏ những cặp ngoặc hợp lệ đi
 => stack còn lại )))..)(..(((

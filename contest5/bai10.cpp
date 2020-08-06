@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 Fij là tổng điểm nhỏ nhất đi từ A11->Aij
 i=j=1 F=Aij
 i=1 j!=1 : F=vị trí bên trái +Aij

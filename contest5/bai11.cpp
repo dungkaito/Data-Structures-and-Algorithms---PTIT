@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 C[0] = C[1] = 1
 C2 = C0 * C1 + C1 * C0
 C3 = C0*C2 + C1*C1 + C2*C0

@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 F[i][j] là số lượng các số có i chữ số, tổng các chữ
 số bằng j
 j=0=>F=0

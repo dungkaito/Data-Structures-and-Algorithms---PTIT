@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 -struct cặp số a,b, a<b
 -phải sort mảng đầu vào tăng dần theo a để tối ưu
 -tìm dãy con tăng dài nhất theo cách so sánh của đề bài

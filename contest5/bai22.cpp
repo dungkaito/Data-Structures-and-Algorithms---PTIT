@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 F[i] là tổng lớn nhất của dãy con không kề nhau của dãy A0 A1...Ai
 -> cần tính F[n-1]
 nhận xét: F[0]->F[i] là dãy tăng dần

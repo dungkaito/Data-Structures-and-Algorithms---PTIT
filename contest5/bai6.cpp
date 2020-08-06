@@ -1,4 +1,4 @@
-/* open with vscode to read 
+/* open with vscode
 abcbadd
 Fij = 1 nếu từ si -> sj đối xứng
 

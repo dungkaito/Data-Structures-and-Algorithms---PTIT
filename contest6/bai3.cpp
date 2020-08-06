@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 0 1 2 3 4 index truoc sort
 5 1 4 2 8 
 1 2 4 5 8 sorted

@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 F[100001]
 cần tìm F[n]
 bước tối đa k bước

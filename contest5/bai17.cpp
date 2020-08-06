@@ -1,4 +1,4 @@
-/* open with vscode to read
+/* open with vscode
 dãy bi-tonic là dãy có các phần tử tăng dần xong giảm dần
 tìm max sum tất cả dãy con bitonic của mảng A
 solution:
