@@ -9,7 +9,7 @@ tại thời điểm a1,a2,...ai-1,ai
 có 2 khả năng (hơi giống bài cái túi)
     note:(để ý định nghĩa mảng F line 6)
     nếu không lấy a[i]: Fij=Fi-1,j 
-    nếu lấy a[i] : Fij=F(i-1,(J-ai)%k) + 1 (với J%k=j hay J là tổng dãy con được chọn tính đến a(i-1))
+    nếu lấy a[i] : Fij=F(i-1,(J-ai)%k) + 1 (với J%k=j hay J là tổng dãy con được chọn tính đến a[i])
         áp dụng (a-b)%m = (a%m - b%m + m)%m
         ta có Fij = F(i-1,(J%k-a[i]%k+k)%k)     + 1
                   = F(i-1,(j-a[i]%k+k)%k)    + 1
